@@ -51,3 +51,29 @@ item_diction={'a': [1, 5, 3], 'b': [10, 2], 'c': [4, 5]}
 new_diction={key:[item for item in value if item>3] for (key,value) in item_diction.items() }
 print(new_diction)
 #if you want to have list as output, the for loop should be inside the list.Remember.
+
+##Concept of defaultdicts:
+'''
+In case you are unsure if the key exist or not, you could use defaultdicts 
+that handles it well by initiating a value for the they key if not found
+'''
+from collections import defaultdict
+
+defa=defaultdict(int)
+with open("ReadingADoc.txt") as data:
+    text=data.read().split()#split the contents into individual words
+wordcount={}
+for word in text:
+    previouscount=wordcount.get(word,0)
+    wordcount[word]=previouscount+1
+print(wordcount)
+
+#Now using defaultdict:
+for word in text:
+    defa[word]+=1
+print(defa)
+#### These will be useful when we’re using dictionaries to “collect”
+# results by some key and don’t want to have to check every time to see
+# if the key exists yet.
+
+
